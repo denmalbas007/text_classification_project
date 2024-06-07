@@ -15,7 +15,7 @@
 1. **Клонирование репозитория:**
 
    ```bash
-   git clone https://github.com/yourusername/text_classification_project.git
+   git clone https://github.com/denmalbas007/text_classification_project.git
    cd text_classification_project
 2. **Установка зависимостей:**
 
