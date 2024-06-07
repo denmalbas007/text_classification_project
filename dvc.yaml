@@ -1,0 +1,35 @@
+stages:
+  load_data:
+    cmd: python src/data/make_dataset.py
+    deps:
+      - src/data/make_dataset.py
+    outs:
+      - data/raw/newsgroups.csv
+
+  preprocess_data:
+    cmd: python src/features/build_features.py
+    deps:
+      - src/features/build_features.py
+      - data/raw/newsgroups.csv
+    outs:
+      - data/processed/newsgroups_features.csv
+      - models/vectorizer.joblib
+
+  train_model:
+    cmd: python src/models/train_model.py
+    deps:
+      - src/models/train_model.py
+      - data/processed/newsgroups_features.csv
+    outs:
+      - models/text_classification_model.joblib
+      - reports/evaluation.txt
+
+  predict:
+    cmd: python src/models/predict_model.py
+    deps:
+      - src/models/predict_model.py
+      - models/text_classification_model.joblib
+      - models/vectorizer.joblib
+      - data/raw/newsgroups.csv
+    outs:
+      - data/processed/newsgroups_predictions.csv

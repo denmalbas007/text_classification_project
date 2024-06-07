@@ -1,0 +1,23 @@
+cmd: python src/models/predict_model.py
+deps:
+- path: data/raw/newsgroups.csv
+  hash: md5
+  md5: 3fdcd349916929cdd5b1f522a94b0d5f
+  size: 36043292
+- path: models/text_classification_model.joblib
+  hash: md5
+  md5: 50d234b93dffb04a670e724b705b0472
+  size: 175751
+- path: models/vectorizer.joblib
+  hash: md5
+  md5: cfa36cd72a3e21ede58ed307b5a976db
+  size: 35905
+- path: src/models/predict_model.py
+  hash: md5
+  md5: 18875ef1472e6981e786ef3d7185855a
+  size: 667
+outs:
+- path: data/processed/newsgroups_predictions.csv
+  hash: md5
+  md5: 78240ca4d6b093e937f143a118e32876
+  size: 36090130

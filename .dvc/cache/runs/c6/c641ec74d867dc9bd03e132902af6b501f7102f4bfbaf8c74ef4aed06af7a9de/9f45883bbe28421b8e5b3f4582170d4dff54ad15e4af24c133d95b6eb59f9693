@@ -1,0 +1,11 @@
+cmd: python src/data/make_dataset.py
+deps:
+- path: src/data/make_dataset.py
+  hash: md5
+  md5: 5973f4a8796fb54ce411628f5559dcfe
+  size: 404
+outs:
+- path: data/raw/newsgroups.csv
+  hash: md5
+  md5: 3fdcd349916929cdd5b1f522a94b0d5f
+  size: 36043292

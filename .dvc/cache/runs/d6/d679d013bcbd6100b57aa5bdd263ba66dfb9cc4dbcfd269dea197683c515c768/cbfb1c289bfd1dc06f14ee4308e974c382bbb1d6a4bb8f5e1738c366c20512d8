@@ -1,0 +1,19 @@
+cmd: python src/models/train_model.py
+deps:
+- path: data/processed/newsgroups_features.csv
+  hash: md5
+  md5: 89862334de2475c019c47c8b51ea3c67
+  size: 101201024
+- path: src/models/train_model.py
+  hash: md5
+  md5: c57612cafbaf90263ba7c1a3ed621914
+  size: 1236
+outs:
+- path: models/text_classification_model.joblib
+  hash: md5
+  md5: 50d234b93dffb04a670e724b705b0472
+  size: 175751
+- path: reports/evaluation.txt
+  hash: md5
+  md5: b390e3a7f45944a731024360e4027381
+  size: 1615

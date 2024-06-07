@@ -1,0 +1,78 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/data/make_dataset.py
+    deps:
+    - path: src/data/make_dataset.py
+      hash: md5
+      md5: 5973f4a8796fb54ce411628f5559dcfe
+      size: 404
+    outs:
+    - path: data/raw/newsgroups.csv
+      hash: md5
+      md5: 3fdcd349916929cdd5b1f522a94b0d5f
+      size: 36043292
+  preprocess_data:
+    cmd: python src/features/build_features.py
+    deps:
+    - path: data/raw/newsgroups.csv
+      hash: md5
+      md5: 3fdcd349916929cdd5b1f522a94b0d5f
+      size: 36043292
+    - path: src/features/build_features.py
+      hash: md5
+      md5: 0b5163692c4698b1370e59441689823d
+      size: 821
+    outs:
+    - path: data/processed/newsgroups_features.csv
+      hash: md5
+      md5: 89862334de2475c019c47c8b51ea3c67
+      size: 101201024
+    - path: models/vectorizer.joblib
+      hash: md5
+      md5: cfa36cd72a3e21ede58ed307b5a976db
+      size: 35905
+  train_model:
+    cmd: python src/models/train_model.py
+    deps:
+    - path: data/processed/newsgroups_features.csv
+      hash: md5
+      md5: 89862334de2475c019c47c8b51ea3c67
+      size: 101201024
+    - path: src/models/train_model.py
+      hash: md5
+      md5: c57612cafbaf90263ba7c1a3ed621914
+      size: 1236
+    outs:
+    - path: models/text_classification_model.joblib
+      hash: md5
+      md5: 50d234b93dffb04a670e724b705b0472
+      size: 175751
+    - path: reports/evaluation.txt
+      hash: md5
+      md5: b390e3a7f45944a731024360e4027381
+      size: 1615
+  predict:
+    cmd: python src/models/predict_model.py
+    deps:
+    - path: data/raw/newsgroups.csv
+      hash: md5
+      md5: 3fdcd349916929cdd5b1f522a94b0d5f
+      size: 36043292
+    - path: models/text_classification_model.joblib
+      hash: md5
+      md5: 50d234b93dffb04a670e724b705b0472
+      size: 175751
+    - path: models/vectorizer.joblib
+      hash: md5
+      md5: cfa36cd72a3e21ede58ed307b5a976db
+      size: 35905
+    - path: src/models/predict_model.py
+      hash: md5
+      md5: 18875ef1472e6981e786ef3d7185855a
+      size: 667
+    outs:
+    - path: data/processed/newsgroups_predictions.csv
+      hash: md5
+      md5: 78240ca4d6b093e937f143a118e32876
+      size: 36090130

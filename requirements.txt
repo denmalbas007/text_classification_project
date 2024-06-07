@@ -1,0 +1,11 @@
+black
+flake8
+isort
+mkdocs
+pip
+python-dotenv
+pandas
+scikit-learn
+joblib
+dvc
+flask
